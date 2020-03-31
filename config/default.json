@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://kaushik2804:kaushik2804@dev-connector-cluster-uzlri.mongodb.net/test?retryWrites=true&w=majority"
+}
