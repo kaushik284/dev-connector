@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://kaushik2804:kaushik2804@dev-connector-cluster-uzlri.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "someSEcret"
+    "jwtSecret": "someSEcret",
+    "githubClientId": "6c837ddc9f7ccc209e82",
+    "githubSecret": "7c0dd8af79077f99307aaf57d9ff3b7e6a3712fa"
 }
