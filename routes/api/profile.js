@@ -1,6 +1,8 @@
 //register / add user
 const express = require('express');
 const router = express.Router();
+const request = require('request');
+const config = require('config');
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -366,6 +368,33 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
     catch (err) {
         console.log(err.message);
         res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/profile/github/:username
+// @desc    GET gihub repos based on username
+// @access  Public
+router.get('/github/:username', (req, res) => {
+    try {
+        const options = {
+            uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get('githubClientId')}&client_secret=${config.get('githubSecret')}`,
+            method: 'GET',
+            headers: { 'user-agent': 'node.js' }
+        };
+        request(options, (error, response, body) => {
+            if (error) {
+                console.error(error);
+            }
+            if (response.statusCode != 200) {
+                res.status(400).json({ msg: 'No GitHub profile found' });
+            }
+
+            return res.json(JSON.parse(body));
+        });
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('SErver Error');
     }
 });
 
