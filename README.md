@@ -13,3 +13,4 @@ Added endpoint for /api/github/:username : GET
 Added endpoints for /api/posts : POST, GET all, GET by Id, DELETE by id
 Added endpoints for /api/posts/like : PUT
 Added endpoints for /api/posts/unlike : PUT
+Added endpoints for /api/posts/comment : POST, DELETE by id
